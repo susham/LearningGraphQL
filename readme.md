@@ -22,6 +22,19 @@ Does GraphQL work on a different principles of REST API? No, GraphQL uses HTTP P
 
 
 
+GraphQL Scalar Types:
+
+Following are the scalar types defined by the GraphQL specification:
+
+i) String
+ii) Float
+iii) Int
+iv) Boolean
+v) ID
+
+
+
+
 
 
 
