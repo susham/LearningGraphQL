@@ -5,7 +5,7 @@ type Query {
     greeting(name: String): String!
     hello: String
     me: User!
-    add(a: Float!, b: Float!): Float!
+    add(numbers: [Float!]!): Float!
     grades: [Int!]!
     }
 
@@ -21,11 +21,15 @@ const resolvers = {
     Query:{
 
         add(parent, args, ctx, info){
-            console.log(args)
-            if(args && args.a && args.b)
-            return args.a+args.b
-
+       
+            if(args && args.numbers.length === 0)
             return 0
+
+
+            return args.numbers.reduce((accumulator, currentValue) => {
+
+                return accumulator + currentValue
+            })
         },
         greeting(parent, args,ctx, info){
             if(args && args.name)
