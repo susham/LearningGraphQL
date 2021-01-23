@@ -13,6 +13,25 @@ const users = [{
     }
 ]
 
+const comments=[
+    {
+        id:'21',
+        text:"This is good post!!!"
+    },
+    {
+        id:'22',
+        text:"Very Well Explained!!!"
+
+    },
+    
+    {
+        id:'23',
+        text:"Good job!!!"
+
+    }
+
+]
+
 const posts = [{
 
 id:'10',
@@ -42,7 +61,7 @@ type Query {
    posts: [Post!]!
     me: User!
     post:Post!
-  
+    comments: [Comment!]!
     }
 
     type User {
@@ -59,6 +78,11 @@ type Query {
         body: String!
         published:Boolean!
         author: User!
+    }
+
+    type Comment{
+        id: ID!
+        text: String!
     }
 `
 
@@ -89,6 +113,9 @@ const resolvers = {
 
         posts(){
             return posts
+        },
+        comments(){
+            return comments
         }
     },
     Post:{
