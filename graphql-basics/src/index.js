@@ -10,23 +10,30 @@ const users = [{
     id:'2',
     name: "SYerabolu",
     email:"test@test1.com"
+    
     }
 ]
 
 const comments=[
     {
         id:'21',
-        text:"This is good post!!!"
+        text:"This is good post!!!",
+        author:'1',
+        post:'10'
     },
     {
         id:'22',
-        text:"Very Well Explained!!!"
+        text:"Very Well Explained!!!",
+        author:'1',
+        post:'10'
 
     },
     
     {
         id:'23',
-        text:"Good job!!!"
+        text:"Good job!!!",
+        author:'2',
+        post:'11'
 
     }
 
@@ -70,6 +77,7 @@ type Query {
         email: String!
         age: Int
         posts: [Post!]!
+        comments:[Comment!]!
     }
 
     type Post{
@@ -78,11 +86,14 @@ type Query {
         body: String!
         published:Boolean!
         author: User!
+        comments:[Comment]
     }
 
     type Comment{
         id: ID!
         text: String!
+        author:User!
+        post: Post!
     }
 `
 
@@ -125,6 +136,13 @@ const resolvers = {
                 return user.id === parent.author
 
             })
+        },
+        comments(parent, args, ctx, info){
+            return comments.filter((comment) => {
+                
+                return comment.post === parent.id
+
+            })
         }
     },
     User:{
@@ -133,8 +151,28 @@ const resolvers = {
                 return post.author === parent.id
 
             })
+        },
+        comments(parent, args, ctx, info){
+            return comments.filter((comment) => {
+                return comment.author === parent.id
+
+            })
         }
+    },
+    Comment:{
+        author(parent, args, ctx, infor){
+            return users.find((user) => {
+                return user.id === parent.author
+            })
+        },
+        post(parent, args, ctx, infor){
+            return posts.find((post) => {
+                return post.id === parent.post
+            })
+        }
+
     }
+    
 }
 
 
