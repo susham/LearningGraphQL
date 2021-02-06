@@ -18,7 +18,7 @@ We need to understand, what replacing REST API means,
 
 Do we change the way we develop the API's? Yes, in terms of Syntax and the runtime environment which helps to resolve the queries. 
 
-Does GraphQL work on a different principles of REST API? No, GraphQL uses HTTP Protocol and the HTTP Verbs(GET, POST, PUT, DELETE) to perform CRUD operations on the data. 
+Does GraphQL work on a different principles of REST API? Yes, GraphQL uses HTTP protocol, but doesn't depend on HTTP Verbs(GET, POST, PUT, DELETE) to perform CRUD operations on the data. 
 
 
 
